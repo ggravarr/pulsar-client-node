@@ -7,6 +7,7 @@ export CFLAGS="-mmacosx-version-min=10.13"
 export CXXFLAGS="-mmacosx-version-min=10.13"
 export LDFLAGS="-mmacosx-version-min=10.13"
 
+brew update --preinstall
 brew bundle --file=- <<-EOS
 brew "curl"
 brew "libpulsar"

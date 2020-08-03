@@ -85,13 +85,13 @@ Napi::Value Message::GetProperties(const Napi::CallbackInfo &info) {
   if (!ValidateCMessage(env)) {
     return env.Null();
   }
-  Napi::Array arr = Napi::Array::New(env);
+  Napi::Object obj = Napi::Object::New(env);
   pulsar_string_map_t *cProperties = pulsar_message_get_properties(this->cMessage);
   int size = pulsar_string_map_size(cProperties);
   for (int i = 0; i < size; i++) {
-    arr.Set(pulsar_string_map_get_key(cProperties, i), pulsar_string_map_get_value(cProperties, i));
+    obj.Set(pulsar_string_map_get_key(cProperties, i), pulsar_string_map_get_value(cProperties, i));
   }
-  return arr;
+  return obj;
 }
 
 Napi::Value Message::GetData(const Napi::CallbackInfo &info) {

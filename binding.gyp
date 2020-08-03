@@ -57,8 +57,8 @@
       	  "libraries": [
             "<(module_root_dir)/build-support/libpulsarwithdeps.a",
             "<!(brew --prefix)/opt/curl/lib/libcurl.a",
-            "-lcrypto",
-            "-lssl"
+            "<!(brew --prefix)/opt/openssl/lib/libcrypto.a",
+            "<!(brew --prefix)/opt/openssl/lib/libssl.a"
           ],
           "xcode_settings": {
             "MACOSX_DEPLOYMENT_TARGET": "10.13",

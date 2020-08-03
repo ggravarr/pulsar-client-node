@@ -29,8 +29,8 @@ jobs:
     - name: Install Linux libpulsar
       if: runner.os == 'Linux'
       run: |
-        curl --output apache-pulsar-client.deb -L "https://archive.apache.org/dist/pulsar/pulsar-2.5.2/DEB/apache-pulsar-client.deb"
-        curl --output apache-pulsar-client-dev.deb -L "https://archive.apache.org/dist/pulsar/pulsar-2.5.2/DEB/apache-pulsar-client-dev.deb"
+        curl --output apache-pulsar-client.deb -L "https://archive.apache.org/dist/pulsar/pulsar-2.6.0/DEB/apache-pulsar-client.deb"
+        curl --output apache-pulsar-client-dev.deb -L "https://archive.apache.org/dist/pulsar/pulsar-2.6.0/DEB/apache-pulsar-client-dev.deb"
         sudo apt install ./apache-pulsar-client*.deb
     - name: Install dependencies
       run: yarn install --frozen-lockfile

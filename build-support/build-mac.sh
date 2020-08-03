@@ -17,14 +17,14 @@ openssl version
 
 tmpdir=$(mktemp -d)
 
-curl --output /tmp/apache-pulsar.tar.gz https://archive.apache.org/dist/pulsar/pulsar-2.5.2/apache-pulsar-2.5.2-src.tar.gz
+curl --output /tmp/apache-pulsar.tar.gz https://archive.apache.org/dist/pulsar/pulsar-2.6.0/apache-pulsar-2.6.0-src.tar.gz
 tar -xf /tmp/apache-pulsar.tar.gz -C "${tmpdir}"
 
-clientdir="${tmpdir}/apache-pulsar-2.5.2/pulsar-client-cpp/"
+clientdir="${tmpdir}/apache-pulsar-2.6.0/pulsar-client-cpp/"
 
 pushd "${clientdir}"
 
-cmake . -DCMAKE_C_FLAGS_RELEASE=-DNDEBUG -DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG -DCMAKE_BUILD_TYPE=Release -DCMAKE_FIND_FRAMEWORK=LAST -DCMAKE_VERBOSE_MAKEFILE=ON -Wno-dev -DBUILD_TESTS=OFF -DLINK_STATIC=ON -DBUILD_PYTHON_WRAPPER=OFF -DBoost_INCLUDE_DIRS=$(brew --prefix)/opt/boost/include
+cmake . -DCMAKE_C_FLAGS_RELEASE=-DNDEBUG -DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG -DCMAKE_BUILD_TYPE=Release -DCMAKE_FIND_FRAMEWORK=LAST -DCMAKE_VERBOSE_MAKEFILE=ON -Wno-dev -DBUILD_TESTS=OFF -DLINK_STATIC=ON -DBUILD_PYTHON_WRAPPER=OFF -DBoost_INCLUDE_DIRS=$(brew --prefix)/opt/boost/include -DCURL_LIBRARIES=$(brew --prefix)/opt/curl/lib/libcurl.a
 
 make pulsarStaticWithDeps -j 3
 

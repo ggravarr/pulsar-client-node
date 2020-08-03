@@ -49,9 +49,8 @@ static const std::map<std::string, pulsar_hashing_scheme> HASHING_SCHEME = {
 static std::map<std::string, pulsar_compression_type> COMPRESSION_TYPE = {
     {"Zlib", pulsar_CompressionZLib},
     {"LZ4", pulsar_CompressionLZ4},
-    // TODO: replace when enum is added to C client
-    {"Zstd", (pulsar_compression_type)2},
-    {"Snappy", (pulsar_compression_type)3}};
+    {"Zstd", pulsar_CompressionZSTD},
+    {"Snappy", pulsar_CompressionSNAPPY}};
 
 ProducerConfig::ProducerConfig(const Napi::Object& producerConfig) : topic("") {
   this->cProducerConfig = pulsar_producer_configuration_create();

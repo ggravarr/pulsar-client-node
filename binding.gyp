@@ -58,18 +58,23 @@
             "<(module_root_dir)/build-support/libpulsarwithdeps.a",
             "<!(brew --prefix)/opt/curl/lib/libcurl.a",
             "<!(brew --prefix)/opt/openssl/lib/libcrypto.a",
-            "<!(brew --prefix)/opt/openssl/lib/libssl.a"
+            "<!(brew --prefix)/opt/openssl/lib/libssl.a",
+            "<!(brew --prefix)/opt/libssh2/lib/libssh2.a"
           ],
           "xcode_settings": {
-            "MACOSX_DEPLOYMENT_TARGET": "10.13",
+            "MACOSX_DEPLOYMENT_TARGET": "10.15",
             "OTHER_LDFLAGS": [
               "-L<!(brew --prefix)/opt/openssl/lib",
-              "-framework Security"
+              "-L<!(brew --prefix)/opt/libssh2/lib",
+              "-framework Security",
+              "-framework Kerberos",
+              "-framework GSS"
             ],
             "OTHER_CPLUSPLUSFLAGS": [
               "-I<!(brew --prefix)/opt/openssl/include",
+              "-I<!(brew --prefix)/opt/libssh2/include",
               "-std=c++11"
-            ]
+             ]
           }
       	}]
       ],
